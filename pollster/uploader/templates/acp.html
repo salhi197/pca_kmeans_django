@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        /* layout.css Style */
+      .upload-drop-zone {
+      height: 200px;
+      border-width: 2px;
+      margin-bottom: 20px;
+      }
+
+      /* skin.css Style*/
+      .upload-drop-zone {
+      color: #ccc;
+      border-style: dashed;
+      border-color: #ccc;
+      line-height: 200px;
+      text-align: center
+          }
+      .upload-drop-zone.drop {
+      color: #222;
+      border-color: #222;
+      }
+    </style>
+    <title>P.C.A - Kmeans</title>
+  </head>
+  <body>
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Détail de fichier </strong> <small>: </small></div>
+    <br>
+
+    <div class="panel-body">
+        <div class="btn-toolbar">
+            <a href="{{file.id}}/pca" class="btn btn-primary">Lancer ACP</a>
+                <button class="btn">Import {{file.id}}</button>
+            <button class="btn">File Path :  {{file.pic.file}}
+            </button>
+        </div>
+        <br>
+        <div class="well">
+            <table class="table responsive-table" id="myTable">
+              <thead>
+                <tr id="thead">
+                </tr>
+              </thead>
+              <tbody id="tbody">
+
+              </tbody>
+            </table>
+        </div>
+        <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Delete Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <p class="error-text">Are you sure you want to delete the user?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+
+    </div>
+  <input id="data" value="{{data}}" type="hidden">
+</div> <!-- /container -->
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+        var data =$('#data').val() 
+        var data= JSON.parse(data)
+
+        data.columns.map(function(val,index){            
+                console.log(val)    
+                $('#thead').append($('<th>').append(val))
+            })
+
+        data.data.map(function(val,index){        
+                var trs = ""         
+                val.map(function(v,i){
+                  trs+= "<td>"+v+"<td>"
+//                  console.log(v)      
+                })
+                console.log(trs)    
+                $('#tbody').append($('<tr>').append(trs))
+
+            })
+
+    </script>
+
+</body>
+</html>
