@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', uploader_views.home, name='imageupload'),
     path('files/<int:id>', uploader_views.showFile, name='acp'),
-    path('files/<int:id>/pca', uploader_views.launchPca, name='acp'),
+    path('files/<int:id>/electre', uploader_views.launchElectre, name='electre'),
+#    path('files/<int:id>/electre', uploader_views.launchElectre, name='electre'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

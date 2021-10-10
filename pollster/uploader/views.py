@@ -4,16 +4,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from pandas import DataFrame, read_csv
 from django.http import JsonResponse
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from matplotlib import interactive
-from sklearn.datasets import load_breast_cancer
-from sklearn.datasets import load_wine
-from sklearn.datasets import load_boston
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+
 
 # Create your views here.
 def home(request):
@@ -36,7 +28,7 @@ def showFile(request, id):
     return render(request,'acp.html',{'file':file,'data':data})
 
 
-def launchPca(request,id):
+def launchElectre(request,id):
     file=Upload.objects.get(pk=id)
     df = pd.read_excel(file.pic.file)
     #cancer=load_breast_cancer()
