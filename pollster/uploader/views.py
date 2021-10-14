@@ -3,8 +3,12 @@ from uploader.models import UploadForm,Upload
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from pandas import DataFrame, read_csv
+import random
+from numpy import random
+
 from django.http import JsonResponse
 import pandas as pd
+from re import search
 
 
 # Create your views here.
@@ -31,30 +35,30 @@ def showFile(request, id):
 def launchElectre(request,id):
     file=Upload.objects.get(pk=id)
     df = pd.read_excel(file.pic.file)
-    #cancer=load_breast_cancer()
-    #data = load_wine()
-    # data= load_boston()
-    # df=pd.DataFrame(data['data'],columns=data['feature_names'])
-    # Standardize the data to have a mean of ~0 and a variance of 1
-    X_std = StandardScaler().fit_transform(df)
-    # Create a PCA instance: pca
-    pca = PCA(n_components=df.shape[1])
-    principalComponents = pca.fit_transform(X_std)
-    # Plot the explained variances
-    features = range(pca.n_components_)
+    number_of_lines = df.shape[0]
+    number_of_cols = df.shape[1]
 
-    # Save components to a DataFrame
-    PCA_components = pd.DataFrame(principalComponents)
-    ks = range(1, 8)
-    inertias = []
-    for k in ks:
-        model = KMeans(n_clusters=k)
-        model.fit(PCA_components.iloc[:,:3])
-        inertias.append(model.inertia_)
-    return render(request,'chart.html',{
-        'file':file,
-        'pca_explained_variance_ratio_':pca.explained_variance_ratio_,
-        'two_pca_components':principalComponents[:,0:2],
-        'inertias':inertias
+    actions = []
+    for i in range(1, number_of_lines):
+        if search("PDV", str(list(df.iloc[i])[0])):
+            actions.append(list(df.iloc[i])[0])
+
+
+    actions.sort()
+    print(actions)
+    classe1 = random.choice(actions,3)
+    classe2 = random.choice(actions,3)
+    classe3 = random.choice(actions,3)
+    classe4 = random.choice(actions,3)
+    classe5 = random.choice(actions,3)
+
+    return render(request,'electre.html',
+        {
+            "actions":actions,
+            "classe1":classe1, 
+            "classe2":classe2, 
+            "classe3":classe3, 
+            "classe4":classe4, 
+            "classe5":classe5 
         })
     
