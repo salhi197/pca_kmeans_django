@@ -143,10 +143,10 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-      <h4>Résultat :</h4>
-            <div class="form-group">
-              Liste de Point de vente : {{actions}}
-          </div>   
+        <h4>Résultat Optimiste :</h4>
+        <div class="form-group">
+            Liste de Point de vente : 
+        </div>   
 
       <div class="table-responsive">
         <table class="table">
@@ -161,54 +161,104 @@
             <tr>
               <th scope="row">1</th>
               <td>A</td>
-              <td>PDV9183,
-                PDV8001,
-                PDV308,
-                PDV335,
-                PDV336,
-                PDV333,
-                PDV6089,</td>
+              <td>
+                {{resulta4}}
+              </td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>B</td>
-              <td>                PDV308,
-                PDV10,
-                PDV10334,
-                PDV295,
-                PDV335,</td>
+              <td>
+                {{resulta3}}
+              </td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>C</td>
               <td>
-                PDV10329,
-                PDV10330                
+                {{resulta2}}
               </td>
             </tr>
             <tr>
               <th scope="row">4</th>
               <td>D</td>
               <td>
-                PDV10,
-                PDV10334,
-                PDV295
+                {{resulta1}}
+
               </td>
             </tr>
             <tr>
               <th scope="row">5</th>
               <td>E</td>
               <td>
-                PDV6091,
-                PDV6593,
-                PDV6594,
-
+                {{resulta0}}
               </td>
             </tr>
 
           </tbody>
         </table>
       </div>
+
+
+      <h4>Résultat Pesimiste :</h4>
+      <div class="form-group">
+          Liste de Point de vente : 
+      </div>   
+
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Classe</th>
+              <th scope="col">Les PDVs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>A</td>
+              <td>
+                {{resulta9}}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>B</td>
+              <td>
+                {{resulta8}}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>C</td>
+              <td>
+                {{resulta7}}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>D</td>
+              <td>
+                {{resulta6}}
+
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>E</td>
+              <td>
+                {{resulta5}}
+              </td>
+            </tr>
+
+          </tbody>          
+        </table>
+      </div>
+
+
+
     </main>
   </div>
 </div>
